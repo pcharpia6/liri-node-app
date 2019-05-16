@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/pcharpia6/liri-node-app#readme",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.1.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0"
   }
 }
