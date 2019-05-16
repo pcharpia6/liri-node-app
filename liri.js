@@ -49,8 +49,13 @@ function concertThis() {
     }
     Axios.get("https://rest.bandsintown.com/artists/" + arg2 + "/events?app_id="+bandskey).then(
         function(response) {
-            console.log(response.data);
-            
+            console.log(response.data[3].venue);
+            for (var i=0; i<response.data.length; i++) {
+                var venue = response.data[i].venue.name;
+                var locale = response.data[i].venue.city + ", " + response.data[i].venue.region;
+                var date = response.data[i].datetime; //use moment to format
+                console.log(venue +"\n"+ locale +"\n"+ date +"\n");
+                }
         }
     )
 };
