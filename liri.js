@@ -3,22 +3,25 @@ require("dotenv").config();
 
 // Required to import the 'keys.js' file
 var keys = require("./keys.js");
-// var express = require("express");
-// var router = express.Router();
+var fs = require("fs");
 var Axios = require("axios");
-// var omdb = require("./omdb");
 var Spotify = require("node-spotify-api");
-// var APP_ID = keys.bands;
-var Bandsintown = require("bandsintown")("codingbootcamp");
+var Inquirer = require("inquirer");
 var arg1 = process.argv[2];
 var arg2 = [];
-// console.log(APP_ID);
-
 
 var spotify = new Spotify(keys.spotify);
 var omdbkey = keys.omdb.key;
 var bandskey = keys.bands.key;
-// function run() {
+
+function run() {
+     inquirer.prompt([
+        {
+            type: "list",
+            message: "What would you like to do?",
+            choices: ["Search for a song.", "Search for a movie.", "Search for a concert event.", "Do what it says."]
+        }
+])
 //     switch () {
 //         case "concert-this":
 //         concertThis();
@@ -38,28 +41,23 @@ var bandskey = keys.bands.key;
 //     }
 // }
 
-// spotify.search({type: "track", query: "mmbop"})
-//     .then(function (spotRes) {
-//         console.log(response);
-//     })
-
 function concertThis() {
     for (i=2; i<process.argv.length; i++) {
         arg2.push(process.argv[i]);
     }
     Axios.get("https://rest.bandsintown.com/artists/" + arg2 + "/events?app_id="+bandskey).then(
         function(response) {
-            console.log(response.data[3].venue);
             for (var i=0; i<response.data.length; i++) {
                 var venue = response.data[i].venue.name;
                 var locale = response.data[i].venue.city + ", " + response.data[i].venue.region;
                 var date = response.data[i].datetime; //use moment to format
-                console.log(venue +"\n"+ locale +"\n"+ date +"\n");
+                var out = venue +"\n"+ locale +"\n"+ date +"\n";
+                console.log(out);
+                write(out);
                 }
         }
     )
 };
-
 
 function spotifyThis() {
     for (i=2; i<process.argv.length; i++) {
@@ -74,7 +72,8 @@ function spotifyThis() {
     var song = "Song: " + data.tracks.items[0].name;
     var link = "Link: " + data.tracks.items[0].preview_url;
     var album = "Album: " + data.tracks.items[0].album.name;
-    console.log(artist +"\n"+ song +"\n"+ link +"\n"+ album); 
+    var out = artist +"\n"+ song +"\n"+ link +"\n"+ album +"\n";
+    console.log(out); 
       });
 }
 
@@ -82,8 +81,6 @@ function movieThis() {
     for (i=2; i<process.argv.length; i++) {
         arg2.push(process.argv[i]);
     }
-    arg2.join("+");
-    // console.log(arg2);
     Axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey="+omdbkey).then(
         function(response) {
             var title = "Title: " + response.data.Title;
@@ -94,13 +91,29 @@ function movieThis() {
             var language = "Language: " + response.data.Language;
             var plot = "Plot: " + response.data.Plot;
             var actors = "Actors: " + response.data.Actors;
-            console.log(title +"\n"+ year +"\n"+ ratingIMDB +"\n"+ ratingRT +"\n"+ country +"\n"+ language +"\n"+ plot +"\n"+ actors);
+            var out = title +"\n"+ year +"\n"+ ratingIMDB +"\n"+ ratingRT +"\n"+ country +"\n"+ language +"\n"+ plot +"\n"+ actors +"\n";
+            console.log(out);
         }
     );
 };
 
-// function doWhatItSays() {
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", (err, data) => {
+        if (err) {
+            return console.log(err);
+        }
+        var itSays = data.split(",");
+        console.log(itSays);
+    })
+}
 
-// }
+function write(data) {
+    fs.appendFile('log.txt', data, (err) => {
+        if (err) throw err;
+        console.log('The "data" was appended to file!');
+      });
+}
 
-concertThis();
+// doWhatItSays();
+// concertThis();
+movieThis();

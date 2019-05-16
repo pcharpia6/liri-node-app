@@ -19,7 +19,6 @@
   "homepage": "https://github.com/pcharpia6/liri-node-app#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "bandsintown": "^1.0.1",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "moment": "^2.24.0",

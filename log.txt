@@ -1,0 +1,51 @@
+Wells Fargo Arena
+Des Moines, IA
+2019-05-17T00:00:00
+SeatGeek Stadium
+Bridgeview, IL
+2019-05-19T00:00:00
+Mercedes-Benz Arena Berlin
+Berlin, 
+2019-06-02T00:00:00
+Wiener Stadthalle Halle D
+Wien, 
+2019-06-05T00:00:00
+Nürburgring Grand Prix track
+Nürburg, 
+2019-06-07T00:00:00
+Zeppelinfeld
+Nuremberg, 
+2019-06-09T00:00:00
+O2 Arena
+Prague, 
+2019-06-04T00:00:00
+Visarno Arena
+Florence, 
+2019-06-13T00:00:00
+Tauron Arena
+Kraków, 
+2019-06-11T00:00:00
+Refshaleøens Snedkeri
+København, 
+2019-06-20T00:00:00
+Ziggo Dome
+Amsterdam, 
+2019-06-18T00:00:00
+Donington Park Circuit
+Derby, 
+2019-06-16T00:00:00
+Festivalpark Werchter
+Werchter, 
+2019-06-28T00:00:00
+Rue du Champ Louet
+Saint-hilaire-de-clisson, 
+2019-06-23T00:00:00
+Caja Mágica
+Madrid, 
+2019-06-30T00:00:00
+Altice Arena
+Lisboa, 
+2019-07-02T00:00:00
+Hallenstadion
+Zürich, 
+2019-06-25T00:00:00
