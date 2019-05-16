@@ -5,17 +5,19 @@ require("dotenv").config();
 var keys = require("./keys.js");
 // var express = require("express");
 // var router = express.Router();
-var axios = require("axios");
+var Axios = require("axios");
 // var omdb = require("./omdb");
 var Spotify = require("node-spotify-api");
-
+// var APP_ID = keys.bands;
+var Bandsintown = require("bandsintown")("codingbootcamp");
 var arg1 = process.argv[2];
 var arg2 = [];
-
+// console.log(APP_ID);
 
 
 var spotify = new Spotify(keys.spotify);
 var omdbkey = keys.omdb.key;
+var bandskey = keys.bands.key;
 // function run() {
 //     switch () {
 //         case "concert-this":
@@ -41,9 +43,18 @@ var omdbkey = keys.omdb.key;
 //         console.log(response);
 //     })
 
-// function concertThis() {
+function concertThis() {
+    for (i=2; i<process.argv.length; i++) {
+        arg2.push(process.argv[i]);
+    }
+    Axios.get("https://rest.bandsintown.com/artists/" + arg2 + "/events?app_id="+bandskey).then(
+        function(response) {
+            console.log(response.data);
+            
+        }
+    )
+};
 
-// }
 
 function spotifyThis() {
     for (i=2; i<process.argv.length; i++) {
@@ -58,7 +69,7 @@ function spotifyThis() {
     var song = "Song: " + data.tracks.items[0].name;
     var link = "Link: " + data.tracks.items[0].preview_url;
     var album = "Album: " + data.tracks.items[0].album.name;
-    console.log(data.tracks.items[0].preview_url); 
+    console.log(artist +"\n"+ song +"\n"+ link +"\n"+ album); 
       });
 }
 
@@ -68,7 +79,7 @@ function movieThis() {
     }
     arg2.join("+");
     // console.log(arg2);
-    axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey="+omdbkey).then(
+    Axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey="+omdbkey).then(
         function(response) {
             var title = "Title: " + response.data.Title;
             var year = "Year of Release: " + response.data.Year;
@@ -87,4 +98,4 @@ function movieThis() {
 
 // }
 
-movieThis();
+concertThis();

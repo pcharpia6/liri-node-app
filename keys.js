@@ -10,5 +10,5 @@ exports.omdb = {
 };
 
 exports.bands = {
-  id: process.env.BANDS_ID
+  key: process.env.BANDS_ID
 };
