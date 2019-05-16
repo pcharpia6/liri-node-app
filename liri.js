@@ -15,7 +15,7 @@ var arg2 = [];
 
 
 var spotify = new Spotify(keys.spotify);
-
+var omdbkey = keys.omdb.key;
 // function run() {
 //     switch () {
 //         case "concert-this":
@@ -68,7 +68,7 @@ function movieThis() {
     }
     arg2.join("+");
     // console.log(arg2);
-    axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey=8d2aecd1").then(
+    axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey="+omdbkey).then(
         function(response) {
             var title = "Title: " + response.data.Title;
             var year = "Year of Release: " + response.data.Year;
@@ -87,4 +87,4 @@ function movieThis() {
 
 // }
 
-spotifyThis();
+movieThis();
