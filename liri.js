@@ -1,20 +1,25 @@
 // Read and set any environment variables with the dotenv package
 require("dotenv").config();
 
-// Required to import the 'keys.js' file
+// Import all necessary files
 var keys = require("./keys.js");
 var fs = require("fs");
 var Axios = require("axios");
 var Spotify = require("node-spotify-api");
 var Inquirer = require("inquirer");
 var Moment = require("moment");
+// A switch statement for the doWhatItSays function
 var whatItSays = false;
+// Global variable for accessing data for the doWhatItSays function
 var itSays;
 
+// Link the keys
 var spotify = new Spotify(keys.spotify);
 var omdbkey = keys.omdb.key;
 var bandskey = keys.bands.key;
 
+// Initial user request to obtain target function
+// Outputs "task" into the getInput() function
 function getTask() {
     var task;
     Inquirer.prompt([
@@ -28,6 +33,10 @@ function getTask() {
     })
 };
 
+// Takes the user input and runs a function dependent on that input
+// Note that the doWhatItSays function runs these, so there is a value check
+// on the "whatItSays" switch variable
+// These case functions return values which are fed into the API calls
 function getInput(taskInput) {
     var song;
     switch (taskInput) {
@@ -91,6 +100,9 @@ function getInput(taskInput) {
     }
 };
 
+// The functions below take the data returned from the Inquirer
+// responses and uses that data to formulate the API calls via Axios
+// (I friggin love Axios after the struggles of Project 1)
 function concertThis(band) {
     var eventArray = [];
     Axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id="+bandskey).then(
@@ -130,7 +142,7 @@ function movieThis(movie) {
             var title = "Title: " + response.data.Title;
             var year = "Year of Release: " + response.data.Year;
             var ratingIMDB = "IMDB Rating: " + response.data.imdbRating;
-            var ratingRT = "Rotten Tomato Rating: " + response.data.Ratings[0].Value; // does not always work... how to search key-value and return?
+            var ratingRT = "Rotten Tomato Rating: " + response.data.Ratings[0].Value; // TODO: does not always work... how to search key-value and return?
             var country = "Country of Production: " + response.data.Country;
             var language = "Language: " + response.data.Language;
             var plot = "Plot: " + response.data.Plot;
@@ -142,6 +154,9 @@ function movieThis(movie) {
     );
 };
 
+// This function grabs information from the "random.txt" file and uses it
+// to run the switch/case function getInput() and simply uses the value 
+// in the file as both user inputs
 function doWhatItSays() {
     whatItSays = true;
     fs.readFile("random.txt", "utf8", (err, data) => {
@@ -153,6 +168,8 @@ function doWhatItSays() {
     })
 }
 
+// All functions returning data also write the data to the log.txt file
+// as a pseudo database
 function write(data) {
     fs.appendFile('log.txt', data, (err) => {
         if (err) throw err;

@@ -2,7 +2,8 @@
 
 LIRI is a _Language Interpretation and Recognition Interface_, inspired by SIRI.
 
-This app was created as a homework assignment for the UNCH Coding Bootcamp in week 11 of the program. The assignment focuses on the use of node.js.
+This app was created as a homework assignment for the UNCH Coding Bootcamp 
+in week 11 of the program. The assignment focuses on the use of node.js.
 
 ### Technologies Used
 
@@ -32,7 +33,8 @@ This app was created as a homework assignment for the UNCH Coding Bootcamp in we
 
     2. The user will need to aquire API keys for Spotify, Bands in Town, and OMDB.
 
-    3. The user will need to create a .env file in the root directory to fill in their API keys in the following format:
+    3. The user will need to create a .env file in the root directory to fill in 
+    their API keys in the following format:
 
         SPOTIFY_ID=value
         SPOTIFY_SECRET=value
@@ -41,18 +43,26 @@ This app was created as a homework assignment for the UNCH Coding Bootcamp in we
 
         OMDB_KEY=value
 
-    4. In the command prompt navigate to the root folder and run `npm install` to obtain all of the necessary node modules listed in the `package.json`.
+    4. In the command prompt navigate to the root folder and run `npm install` 
+    to obtain all of the necessary node modules listed in the `package.json`.
 
 ### Use
 
     1. Use the command prompt navigated to the root folder to run `liri.js`.
 
-    2. This app utilizes node Inquirer to request user input. Initial user input directs the program to run one of four functions.
+    2. This app utilizes node Inquirer to request user input. Initial user input 
+    directs the program to run one of four functions.
 
 ![Run Program and Select First Option](assets/clips/liri-init.gif)
 
-    3. Afterwards requiring additional query data from the user to direct the functions. Query data then runs the appropriate API search and returns data.
+    3. Afterwards requiring additional query data from the user to direct the 
+    functions. Query data then runs the appropriate API search and returns data.
 
- ![User Input Required](assets/clips/liri-input.gif)
+![User Input Required](assets/clips/liri-input.gif)
 
-    4. The returned data is pushed into the `log.txt` file as a pseudo-database for previous searches.
+    4. The returned data is pushed into the `log.txt` file as a pseudo-database 
+    for previous searches.
+
+    5. The "Do what it says" option will use information found in the `random.txt`
+    file to formulate the API call. The functionality of that selection can be 
+    altered by editing that file manually.
