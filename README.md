@@ -7,4 +7,5 @@ This app was created as a homework assignment for the UNCH Coding Bootcamp in we
 This app utilizes node Inquirer to request user input.
 Initial user input directs the program to run one of four functions, requiring additional query data from the user to direct the functions.
 
-![Run Program and Select First Option](assets/clips/liri-init.mp4)
+![Run Program and Select First Option](assets/clips/liri-init.gif)
+
