@@ -7,45 +7,89 @@ var fs = require("fs");
 var Axios = require("axios");
 var Spotify = require("node-spotify-api");
 var Inquirer = require("inquirer");
-var arg1 = process.argv[2];
-var arg2 = [];
+var whatItSays = false;
+var itSays;
 
 var spotify = new Spotify(keys.spotify);
 var omdbkey = keys.omdb.key;
 var bandskey = keys.bands.key;
 
-function run() {
-     inquirer.prompt([
-        {
-            type: "list",
-            message: "What would you like to do?",
-            choices: ["Search for a song.", "Search for a movie.", "Search for a concert event.", "Do what it says."]
+function getTask() {
+    var task;
+    Inquirer.prompt([
+        { type: "list",
+        message: "What would you like to do?",
+        choices: ["Search for a song.", "Search for a movie.", "Search for a concert event.", "Do what it says."],
+        name: "task" }
+    ]).then((inqResp) => {
+        task = inqResp.task
+        getInput(task);
+    })
+};
+
+function getInput(taskInput) {
+    var song;
+    switch (taskInput) {
+        case "Search for a song.":
+        if (whatItSays) {
+            spotifyThis(itSays[1])
+            break;
         }
-])
-//     switch () {
-//         case "concert-this":
-//         concertThis();
-//         break;
+        Inquirer.prompt([
+            { type: "input",
+            message: "What is the name of the song?",
+            name: "song" }
+        ]).then((inqResp) => {
+            if (inqResp) {
+                song = inqResp.song;
+            }
+            spotifyThis(song);
+        })
+        break;
 
-//         case "spotify-this-song":
-//         spotifyThis();
-//         break;
+        case "Search for a movie.":
+        if (whatItSays) {
+            movieThis(itSays[1])
+            break;
+        }
+        Inquirer.prompt([
+            { type: "input",
+            message: "What is the name of the movie?",
+            name: "movie" }
+        ]).then((inqResp) => {
+            if (inqResp) {
+                movie = inqResp.movie;
+            }
+            movieThis(movie);
+        })
+        break;
 
-//         case "movie-this":
-//         movieThis();
-//         break;
+        case "Search for a concert event.":
+            if (whatItSays) {
+                concertThis(itSays[1])
+                break;
+            }
+        Inquirer.prompt([
+            { type: "input",
+            message: "What is the name of the musical group?",
+            name: "band" }
+        ]).then((inqResp) => {
+            if (inqResp) {
+                band = inqResp.band;
+            }
+            concertThis(band);
+        })
+        break;
 
-//         case "do-what-it-says":
-//         doWhatItSays();
-//         break;
-//     }
-// }
-
-function concertThis() {
-    for (i=2; i<process.argv.length; i++) {
-        arg2.push(process.argv[i]);
+        case "Do what it says.":
+        doWhatItSays();
+        break;
     }
-    Axios.get("https://rest.bandsintown.com/artists/" + arg2 + "/events?app_id="+bandskey).then(
+};
+
+function concertThis(band) {
+    var eventArray = [];
+    Axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id="+bandskey).then(
         function(response) {
             for (var i=0; i<response.data.length; i++) {
                 var venue = response.data[i].venue.name;
@@ -53,17 +97,18 @@ function concertThis() {
                 var date = response.data[i].datetime; //use moment to format
                 var out = venue +"\n"+ locale +"\n"+ date +"\n";
                 console.log(out);
-                write(out);
-                }
+                eventArray.push(out);
+            }
+            write(eventArray);
         }
     )
 };
 
-function spotifyThis() {
-    for (i=2; i<process.argv.length; i++) {
-        arg2.push(process.argv[i]);
-    }
-    spotify.search({ type: 'track', query: arg2, limit: 1 }, function(err, data) {
+function spotifyThis(song) {
+    // for (i=2; i<process.argv.length; i++) {
+    //     arg2.push(process.argv[i]);
+    // }
+    spotify.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
         if (err) {
             spotify.search({type: "track", query: "Ace of Base", limit: 1})
             // return console.log('Error occurred: ' + err);
@@ -73,15 +118,13 @@ function spotifyThis() {
     var link = "Link: " + data.tracks.items[0].preview_url;
     var album = "Album: " + data.tracks.items[0].album.name;
     var out = artist +"\n"+ song +"\n"+ link +"\n"+ album +"\n";
-    console.log(out); 
+    console.log(out);
+    write(out);
       });
-}
+};
 
-function movieThis() {
-    for (i=2; i<process.argv.length; i++) {
-        arg2.push(process.argv[i]);
-    }
-    Axios.get("http://www.omdbapi.com/?t="+arg2+"&y=&plot=short&apikey="+omdbkey).then(
+function movieThis(movie) {
+    Axios.get("http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey="+omdbkey).then(
         function(response) {
             var title = "Title: " + response.data.Title;
             var year = "Year of Release: " + response.data.Year;
@@ -93,17 +136,19 @@ function movieThis() {
             var actors = "Actors: " + response.data.Actors;
             var out = title +"\n"+ year +"\n"+ ratingIMDB +"\n"+ ratingRT +"\n"+ country +"\n"+ language +"\n"+ plot +"\n"+ actors +"\n";
             console.log(out);
+            write(out);
         }
     );
 };
 
 function doWhatItSays() {
+    whatItSays = true;
     fs.readFile("random.txt", "utf8", (err, data) => {
         if (err) {
             return console.log(err);
         }
-        var itSays = data.split(",");
-        console.log(itSays);
+        itSays = data.split(",");
+        getInput(itSays[0]);
     })
 }
 
@@ -114,6 +159,4 @@ function write(data) {
       });
 }
 
-// doWhatItSays();
-// concertThis();
-movieThis();
+getTask();
