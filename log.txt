@@ -1,160 +1,25 @@
-Wells Fargo Arena
-Des Moines, IA
-2019-05-17T00:00:00
-SeatGeek Stadium
-Bridgeview, IL
-2019-05-19T00:00:00
-Mercedes-Benz Arena Berlin
-Berlin, 
-2019-06-02T00:00:00
-Wiener Stadthalle Halle D
-Wien, 
-2019-06-05T00:00:00
-Nürburgring Grand Prix track
-Nürburg, 
-2019-06-07T00:00:00
-Zeppelinfeld
-Nuremberg, 
-2019-06-09T00:00:00
-O2 Arena
-Prague, 
-2019-06-04T00:00:00
-Visarno Arena
-Florence, 
-2019-06-13T00:00:00
-Tauron Arena
-Kraków, 
-2019-06-11T00:00:00
-Refshaleøens Snedkeri
-København, 
-2019-06-20T00:00:00
-Ziggo Dome
-Amsterdam, 
-2019-06-18T00:00:00
-Donington Park Circuit
-Derby, 
-2019-06-16T00:00:00
-Festivalpark Werchter
-Werchter, 
-2019-06-28T00:00:00
-Rue du Champ Louet
-Saint-hilaire-de-clisson, 
-2019-06-23T00:00:00
-Caja Mágica
-Madrid, 
-2019-06-30T00:00:00
-Altice Arena
-Lisboa, 
-2019-07-02T00:00:00
-Hallenstadion
-Zürich, 
-2019-06-25T00:00:00
-SeatGeek Stadium
-Bridgeview, IL
-2019-05-19T00:00:00
-Mercedes-Benz Arena Berlin
-Berlin, 
-2019-06-02T00:00:00
-O2 Arena
-Prague, 
-2019-06-04T00:00:00
-Nürburgring Grand Prix track
-Nürburg, 
-2019-06-07T00:00:00
-Wiener Stadthalle Halle D
-Wien, 
-2019-06-05T00:00:00
-Zeppelinfeld
-Nuremberg, 
-2019-06-09T00:00:00
-Tauron Arena
-Kraków, 
-2019-06-11T00:00:00
-Visarno Arena
-Florence, 
-2019-06-13T00:00:00
-Donington Park Circuit
-Derby, 
-2019-06-16T00:00:00
-Refshaleøens Snedkeri
-København, 
-2019-06-20T00:00:00
-Ziggo Dome
-Amsterdam, 
-2019-06-18T00:00:00
-Rue du Champ Louet
-Saint-hilaire-de-clisson, 
-2019-06-23T00:00:00
-Festivalpark Werchter
-Werchter, 
-2019-06-28T00:00:00
-Caja Mágica
-Madrid, 
-2019-06-30T00:00:00
-Hallenstadion
-Zürich, 
-2019-06-25T00:00:00
-Altice Arena
-Lisboa, 
-2019-07-02T00:00:00
-SeatGeek Stadium
-Bridgeview, IL
-2019-05-19T00:00:00
-,Mercedes-Benz Arena Berlin
-Berlin, 
-2019-06-02T00:00:00
-,O2 Arena
-Prague, 
-2019-06-04T00:00:00
-,Wiener Stadthalle Halle D
-Wien, 
-2019-06-05T00:00:00
-,Nürburgring Grand Prix track
-Nürburg, 
-2019-06-07T00:00:00
-,Zeppelinfeld
-Nuremberg, 
-2019-06-09T00:00:00
-,Tauron Arena
-Kraków, 
-2019-06-11T00:00:00
-,Visarno Arena
-Florence, 
-2019-06-13T00:00:00
-,Donington Park Circuit
-Derby, 
-2019-06-16T00:00:00
-,Ziggo Dome
-Amsterdam, 
-2019-06-18T00:00:00
-,Refshaleøens Snedkeri
-København, 
-2019-06-20T00:00:00
-,Rue du Champ Louet
-Saint-hilaire-de-clisson, 
-2019-06-23T00:00:00
-,Hallenstadion
-Zürich, 
-2019-06-25T00:00:00
-,Festivalpark Werchter
-Werchter, 
-2019-06-28T00:00:00
-,Caja Mágica
-Madrid, 
-2019-06-30T00:00:00
-,Altice Arena
-Lisboa, 
-2019-07-02T00:00:00
-Cactus Petes Resort Casino Gala Showroom
-Jackpot, NV
-2019-06-15T19:00:00
-,Artpark
-Lewiston, NY
-2019-07-09T18:00:00
-,Umatilla County Fair
-Hermiston, OR
-2019-08-10T21:00:00
-Artist: Backstreet Boys
-Song: I Want It That Way
-Link: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=a9e84a92cb7b4c218164d1a3f284e997
-Album: The Hits--Chapter One
+Title: Cars
+Year of Release: 2006
+IMDB Rating: 7.1
+Rotten Tomato Rating: 7.1/10
+Country of Production: USA
+Language: English, Italian, Japanese, Yiddish
+Plot: A hot-shot race-car named Lightning McQueen gets waylaid in Radiator Springs, where he finds the true meaning of friendship and family.
+Actors: Owen Wilson, Paul Newman, Bonnie Hunt, Larry the Cable Guy
+Title: Mr. Nobody
+Year of Release: 2009
+IMDB Rating: 7.8
+Rotten Tomato Rating: 7.8/10
+Country of Production: Belgium, Germany, Canada, France, USA, UK
+Language: English, Mohawk
+Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
+Venue: Cactus Petes Resort Casino Gala Showroom
+Region: Jackpot, NV
+Date: Jun 15 2019
+,Venue: Artpark
+Region: Lewiston, NY
+Date: Jul 09 2019
+,Venue: Umatilla County Fair
+Region: Hermiston, OR
+Date: Aug 10 2019

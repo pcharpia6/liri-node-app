@@ -7,6 +7,7 @@ var fs = require("fs");
 var Axios = require("axios");
 var Spotify = require("node-spotify-api");
 var Inquirer = require("inquirer");
+var Moment = require("moment");
 var whatItSays = false;
 var itSays;
 
@@ -38,7 +39,8 @@ function getInput(taskInput) {
         Inquirer.prompt([
             { type: "input",
             message: "What is the name of the song?",
-            name: "song" }
+            name: "song",
+            default: "The Sign" }
         ]).then((inqResp) => {
             if (inqResp) {
                 song = inqResp.song;
@@ -55,7 +57,8 @@ function getInput(taskInput) {
         Inquirer.prompt([
             { type: "input",
             message: "What is the name of the movie?",
-            name: "movie" }
+            name: "movie",
+            default: "Mr. Nobody" }
         ]).then((inqResp) => {
             if (inqResp) {
                 movie = inqResp.movie;
@@ -72,7 +75,8 @@ function getInput(taskInput) {
         Inquirer.prompt([
             { type: "input",
             message: "What is the name of the musical group?",
-            name: "band" }
+            name: "band",
+            default: "Sugar Ray" }
         ]).then((inqResp) => {
             if (inqResp) {
                 band = inqResp.band;
@@ -92,9 +96,9 @@ function concertThis(band) {
     Axios.get("https://rest.bandsintown.com/artists/" + band + "/events?app_id="+bandskey).then(
         function(response) {
             for (var i=0; i<response.data.length; i++) {
-                var venue = response.data[i].venue.name;
-                var locale = response.data[i].venue.city + ", " + response.data[i].venue.region;
-                var date = response.data[i].datetime; //use moment to format
+                var venue = "Venue: " + response.data[i].venue.name;
+                var locale = "Region: " + response.data[i].venue.city + ", " + response.data[i].venue.region;
+                var date = "Date: " + Moment(response.data[i].datetime).format("MMM DD YYYY");
                 var out = venue +"\n"+ locale +"\n"+ date +"\n";
                 console.log(out);
                 eventArray.push(out);
@@ -105,13 +109,10 @@ function concertThis(band) {
 };
 
 function spotifyThis(song) {
-    // for (i=2; i<process.argv.length; i++) {
-    //     arg2.push(process.argv[i]);
-    // }
     spotify.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
         if (err) {
             spotify.search({type: "track", query: "Ace of Base", limit: 1})
-            // return console.log('Error occurred: ' + err);
+            return console.log('Error occurred: ' + err);
         }
     var artist = "Artist: " + data.tracks.items[0].artists[0].name;
     var song = "Song: " + data.tracks.items[0].name;
